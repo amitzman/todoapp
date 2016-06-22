@@ -1,0 +1,18 @@
+.task-table {
+  border:thick black solid;
+
+}
+.task-row {
+  border: thin black solid;
+}
+.task-column {
+  padding: 10px;
+  text-align: center;
+}
+.task-header {
+  font-size: 1.5em;
+  padding-left:1em;
+  padding-right:1em;
+  vertical-align: bottom;
+  text-align: center;
+}

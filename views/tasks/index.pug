@@ -1,0 +1,32 @@
+extends ../shared/template
+block content
+  h2 My To-Do List
+  table
+    thead
+      th.task-header
+      th.task-header
+      th.task-header Due Date
+      th.task-header Task
+      th.task-header Category
+      th.task-header Priority
+      th.task-header Completed?
+      th.task-header Create Date
+    tbody.task-table
+      each t in taskViews
+        tr.task-row(style=`background-color:${t.priorityColor}`)
+          td.task-column
+            form(action=`/tasks/${t.id}/delete`, method='post')
+              button.i.fa.fa-trash.fa-fw.fa-2x(type='submit' style=`background-color:${t.priorityColor};border:none`)
+          td.task-column
+              a(href=`/tasks/${t.id}/edit`): i.fa.fa-pencil-square-o.fa-fw.fa-2x
+          td.task-column=t.dueDate
+          td.task-column=t.name
+          td.task-column=t.category
+          td.task-column=t.priorityName
+          td.task-column
+            form(action=`/tasks/${t.id}/complete`, method='post')
+              if (t.isComplete)
+                button.fa.fa-check-square-o.fa-fw.fa-2x(type='submit' style=`background-color:${t.priorityColor};border:none`)
+              else
+                button.fa.fa-square-o.fa-fw.fa-2x(type='submit' style=`background-color:${t.priorityColor};border:none`)
+          td.task-column=t.creationDate

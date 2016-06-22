@@ -1,0 +1,22 @@
+extends ../shared/template
+block content
+  h1 Create a New Task
+  form(action='/tasks', method = 'post')
+    .form-group
+      label Name
+      input.form-control(type='text', name ='name' value=`${task.name}`)
+    .form-group
+      label Due Date
+      input.form-control(type='date', name = 'dueDate' value=`${task.dueDate}`)
+    .form-group
+      label Priority:
+      select.form-control(name='priority', value=priority)
+        each p in priorities
+          option(value=p.value)=p.name
+    .form-group
+      label Category:
+      select.form-control(name='category', value=category)
+        each c in categories
+          option(value=c.name)=c.name
+    .form-group
+      button.btn.btn-primary(type='submit') Submit
