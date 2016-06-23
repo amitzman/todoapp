@@ -19,7 +19,7 @@ block content
               button.i.fa.fa-trash.fa-fw.fa-2x(type='submit' style=`background-color:${t.priorityColor};border:none`)
           td.task-column
               a(href=`/tasks/${t.id}/edit`): i.fa.fa-pencil-square-o.fa-fw.fa-2x
-          td.task-column=t.dueDate
+          td.task-column=t.dueDate.toLocaleDateString()
           td.task-column=t.name
           td.task-column=t.category
           td.task-column=t.priorityName
@@ -29,4 +29,4 @@ block content
                 button.fa.fa-check-square-o.fa-fw.fa-2x(type='submit' style=`background-color:${t.priorityColor};border:none`)
               else
                 button.fa.fa-square-o.fa-fw.fa-2x(type='submit' style=`background-color:${t.priorityColor};border:none`)
-          td.task-column=t.creationDate
+          td.task-column=t.creationDate.toLocaleDateString()
