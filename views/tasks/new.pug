@@ -1,13 +1,19 @@
 extends ../shared/template
 block content
   h1 Create a New Task
-  form(action='/tasks', method = 'post')
+  h2=task._id
+  - let month = task.dueDate.getMonth() + 1;
+  - month = month < 10 ? '0'+ month : month;
+  - day = task.dueDate.getDate() < 10 ? '0' + task.dueDate.getDate() : task.dueDate.getDate();
+  - var dueDateString=task.dueDate.getFullYear()+'-' + month + '-' + day;
+  form(action='/tasks', method = 'post').form-group
+    input.form-control(type='hidden', name ='_id' value=`${task._id}` )
     .form-group
       label Name
       input.form-control(type='text', name ='name' value=`${task.name}`)
     .form-group
       label Due Date
-      input.form-control(type='date', name = 'dueDate' value=`${task.dueDate}`)
+      input.form-control(type='date', name = 'dueDate' value=`${dueDateString}`)
     .form-group
       label Priority:
       select.form-control(name='priority', value=priority)
